@@ -32,51 +32,25 @@
 }
 
 body {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+	scroll-snap-type: y mandatory;
 }
 
-.background {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(-30deg, rgb(17, 189, 160), rgb(27, 142, 236), rgb(218, 54, 54), rgb(223, 29, 158)) no-repeat;
-	background-size: 300% 300%;
-	animation: page-background 60s infinite;
-}
-
-main {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: url(noise.png) repeat;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-}
-
-h1 {
-	font: bold 5.5em Montserrat;
+h1, h2 {
+	font: bold Montserrat;
 	color: #fff;
 	text-shadow: 0 0 2px #fff;
 	text-align: center;
 }
 
 p {
-	font: bold 18px Montserrat;
+	font: bold Montserrat;
 	color: #fff;
 	padding: 0 2em;
 	text-align: center;
 }
 
 a {
-	font: bold 18px Montserrat;
+	font: bold Montserrat;
 	color: #fff;
 	transition: text-shadow .3s ease;
 }
@@ -84,51 +58,153 @@ a:hover {
 	text-shadow: 0 0 2px #fff;
 }
 
-footer {
+.background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(-30deg, rgb(17, 189, 160), rgb(27, 142, 236), rgb(218, 54, 54), rgb(223, 29, 158)) no-repeat;
+	background-size: 300% 300%;
+	animation: page-background 60s infinite;
+	z-index: -1;
+}
+
+.page {
+	width: 100%;
+	height: 100vh;
+	background: url(noise.png) repeat;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	scroll-snap-align: start;
+}
+
+.page-1 .name-romaji {
+	font: bold 8.25vw/8.25vw Montserrat;
+	text-transform: uppercase;
+	text-shadow: -15px 15px 10px #0003;
+	margin: 0;
+	padding: 0;
 	position: absolute;
-	bottom: 40px;
+	left: 4vw;
+	bottom: 8vw;
+}
+
+.page-1 .name-pronouncation {
+	font: normal 1.7vw/1.7vw Montserrat;
+	text-transform: lowercase;
+	opacity: .9;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 4vw;
+	bottom: 4vw;
+}
+
+.page-1 .name-kanji {
+	font: normal 14vw/14vw Montserrat;
+	writing-mode: vertical-lr;
+	text-shadow: -15px 15px 10px #0003;
+	opacity: .9;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 4vw;
+	bottom: 4vw;
+}
+
+.page-2 .headline {
+	font: bold 5vw Montserrat;
+	margin: 0;
+	padding: 0;
+	margin-top: 6vw;
+}
+
+.page-2 .subheading {
+	font: bold 4.5vw Montserrat;
+	margin: 0;
+	padding: 0;
+}
+
+.page-2 .paragraph {
+	font: bold 1.4vw Montserrat;
+	margin: 0;
+	padding: 0;
+	margin-top: 5vw;
+}
+
+footer {
+	margin-top: -5vw;
 	width: 100%;
 	z-index: 10;
 	text-align: center;
-	font: bold 12px Montserrat;
+	font: bold .8vw/.8vw Montserrat;
 	color: #fff;
 	opacity: .5;
 }
 
-@media (max-width: 1100px) {
-	h1 {
-		font-size: 4em;
-	}
+@media (orientation: portrait) {
+.page-1 .name-romaji {
+	writing-mode: vertical-rl;
+	font-size: 12vh;
+	line-height: 12vh;
+	text-align: left;
+	left: unset;
+	bottom: unset;
+	top: 4vh;
+	left: 4vh;
+	max-height: 80%;
+}
+.page-1 .name-pronouncation {
+	font-size: 3vh;
+	line-height: 5vh;
+	text-align: left;
+	max-width: 50%;
+}
+.page-1 .name-kanji {
+	font-size: 16vh;
+	line-height: 16vh;
 }
 
-@media (max-width: 600px) {
-	h1 {
-		font-size: 15vw;
-		align-self: flex-end;
-		text-align: left;
-		padding: 0 2em;
-	}
+.page-2 .headline {
+	font-size: 4vh;
+	line-height: 4vh;
+	margin: 16vh 0 1vh;
+}
+.page-2 .subheading {
+	font-size: 3vh;
+	line-height: 3vh;
+	margin: 1vh 0 6vh;
+}
+.page-2 .paragraph {
+	font-size: 2vh;
+	line-height: 4vh;
+	max-width: 80%;
+}
 
-	p {
-		font-size: 4vw;
-		padding: 2em;
-	}
-
-	a {
-		font-size: 4vw;
-	}
-
-	footer {
-		font-size: 3vw;
-	}
+footer {
+	font-size: 1.5vh;
+	line-height: 1.5vh;
+	margin-top: -8vh;
+}
 }
 	</style>
 </head>
 <body>
 	<div class="background"></div>
 	<main>
-		<h1>Coming soon</h1>
-		<p>In the meantime, check out my <a href="https://github.com/lunakurame">GitHub&nbsp;profile</a> and <a href="https://squirrel-tale.kurame.org">Squirrel&nbsp;Tale</a>, a&nbsp;game&nbsp;I&nbsp;made!</p>
+		<div class="page page-1">
+			<h1 class="name-romaji">Luna Kurame</h1>
+			<h2 class="name-kanji">暗胡月</h2>
+			<p class="name-pronouncation">pronounced as luna koo-rah-meh</p>
+		</div>
+		<div class="page page-2">
+			<h1 class="headline">I'm a software engineer.</h1>
+			<h2 class="subheading">I make websites and webapps.</h2>
+			<p class="paragraph">Check out my <a href="https://github.com/lunakurame">GitHub&nbsp;profile</a> and <a href="https://squirrel-tale.kurame.org">Squirrel&nbsp;Tale</a>, a&nbsp;game&nbsp;I&nbsp;made!</p>
+		</div>
 	</main>
 	<footer>
 		Copyright &copy; 2022 Luna Kurame
