@@ -81,10 +81,56 @@ a:hover {
 	scroll-snap-align: start;
 }
 
+@keyframes rotate-name-romaji {
+	from {
+		transform: translateZ(100vw) rotate3d(-.5, -1, .05, 20deg) translateY(-15px);
+		text-shadow: 0 0 10px #0006;
+	}
+	to {
+		transform: translateZ(100vw);
+		text-shadow: -15px 15px 10px #0003;
+	}
+}
+@keyframes rotate-name-romaji-portrait {
+	from {
+		transform: translateZ(100vw) rotate3d(-.5, -1, .05, 20deg) translateY(15px);
+		text-shadow: 0 0 10px #0006;
+	}
+	to {
+		transform: translateZ(100vw);
+		text-shadow: -15px 15px 10px #0003;
+	}
+}
+@keyframes rotate-name-pronouncation {
+	from, 50% {
+		transform: scale(.98);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: .9;
+	}
+}
+@keyframes rotate-name-kanji {
+	from {
+		transform: translateZ(100vw) rotate3d(.5, -1, -.05, 20deg);
+		text-shadow: 0 0 10px #0006;
+		opacity: 1;
+	}
+	to {
+		transform: translateZ(100vw);
+		text-shadow: -15px 15px 10px #0003;
+		opacity: .9;
+	}
+}
+
+.page-1 {
+}
+
 .page-1 .name-romaji {
+	animation: rotate-name-romaji 3s ease-out 1 forwards;
 	font: bold 8.25vw/8.25vw Montserrat;
 	text-transform: uppercase;
-	text-shadow: -15px 15px 10px #0003;
 	margin: 0;
 	padding: 0;
 	position: absolute;
@@ -93,9 +139,9 @@ a:hover {
 }
 
 .page-1 .name-pronouncation {
+	animation: rotate-name-pronouncation 3s ease-out 1 forwards;
 	font: normal 1.7vw/1.7vw Montserrat;
 	text-transform: lowercase;
-	opacity: .9;
 	margin: 0;
 	padding: 0;
 	position: absolute;
@@ -104,10 +150,9 @@ a:hover {
 }
 
 .page-1 .name-kanji {
+	animation: rotate-name-kanji 3s ease-out 1 forwards;
 	font: normal 14vw/14vw Montserrat;
 	writing-mode: vertical-rl;
-	text-shadow: -15px 15px 10px #0003;
-	opacity: .9;
 	margin: 0;
 	padding: 0;
 	position: absolute;
@@ -147,6 +192,7 @@ footer {
 
 @media (orientation: portrait) {
 .page-1 .name-romaji {
+	animation: rotate-name-romaji-portrait 3s ease-out 1 forwards;
 	writing-mode: vertical-rl;
 	font-size: 12vh;
 	line-height: 12vh;
@@ -161,7 +207,7 @@ footer {
 	font-size: 3vh;
 	line-height: 5vh;
 	text-align: left;
-	max-width: 50%;
+	max-width: 53%;
 }
 .page-1 .name-kanji {
 	font-size: 16vh;
@@ -198,7 +244,7 @@ footer {
 		<div class="page page-1">
 			<h1 class="name-romaji">Luna Kurame</h1>
 			<h2 class="name-kanji" lang="ja">暗胡月</h2>
-			<p class="name-pronouncation">pronounced as luna koo-rah-meh</p>
+			<p class="name-pronouncation">pronounced as luna koo&#8209;rah&#8209;meh</p>
 		</div>
 		<div class="page page-2">
 			<h1 class="headline">I'm a software engineer.</h1>
