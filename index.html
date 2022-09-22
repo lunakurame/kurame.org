@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700&display=swap" rel="stylesheet">
 	<style>
 @keyframes page-background {
 	from {
@@ -111,6 +111,17 @@ a:hover {
 	}
 }
 
+@keyframes scroll-down {
+	from, 70% {
+		transform: scale(.98);
+		opacity: 0;
+	}
+	10%, 60% {
+		transform: scale(1);
+		opacity: .9;
+	}
+}
+
 .page-1 {
 }
 
@@ -151,6 +162,18 @@ a:hover {
 	position: absolute;
 	right: 3vw;
 	bottom: 3vw;
+}
+
+.page-1 .scroll-down {
+	opacity: 0;
+	animation: scroll-down 6s ease-in-out 6s infinite forwards;
+	font: 500 1.5vw/1.5vw Montserrat;
+	text-transform: lowercase;
+	text-shadow: 0 0 10px #0006;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	bottom: 1.5vw;
 }
 
 .page-2 .headline {
@@ -212,6 +235,10 @@ footer {
 	bottom: 3vw;
 }
 
+.page-1 .scroll-down {
+	display: none;
+}
+
 .page-2 .headline {
 	font-size: 4vh;
 	line-height: 4vh;
@@ -243,6 +270,7 @@ footer {
 			<h1 class="name-romaji">Luna Kurame</h1>
 			<h2 class="name-kanji" lang="ja">暗胡月</h2>
 			<p class="name-pronouncation">pronounced as luna&nbsp;koo&#8209;rah&#8209;meh</p>
+			<p class="scroll-down">scroll down</p>
 		</div>
 		<div class="page page-2">
 			<h1 class="headline">I'm a software engineer.</h1>
