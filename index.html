@@ -35,6 +35,10 @@ html {
 	scroll-snap-type: y mandatory;
 }
 
+body {
+	margin: 0;
+}
+
 h1, h2 {
 	font: bold Montserrat;
 	color: #fff;
@@ -196,6 +200,47 @@ a:hover {
 	margin-top: 5vw;
 }
 
+@keyframes square {
+	from, to {
+		opacity: .9;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+.page-3 {
+	height: 300vh;
+	position: relative;
+	justify-content: flex-start;
+}
+
+.page-3 .square {
+	animation: square 2s ease infinite forwards;
+	background-color: #fff;
+	width: 20vw;
+	height: 20vw;
+	box-shadow: 0 0 1vw #0004;
+	border-radius: .1vw;
+	position: sticky;
+	margin-top: calc(50vh - 20vw / 2);
+	top: calc(50vh - 20vw / 2);
+	transition: all .5s ease-out;
+}
+
+.page-3 .square-circled {
+	width: 22.5675834vw;
+	height: 22.5675834vw;
+	margin-top: calc(50vh - 22.5675834vw / 2);
+	top: calc(50vh - 22.5675834vw / 2);
+	border-radius: 50%;
+	box-shadow: 0 0 .1vw #fff;
+}
+
+.page-4 {
+	height: 0;
+}
+
 footer {
 	margin-top: -5vw;
 	width: 100%;
@@ -277,9 +322,24 @@ footer {
 			<h2 class="subheading">I make websites and webapps.</h2>
 			<p class="paragraph">Check out my <a href="https://github.com/lunakurame">GitHub&nbsp;profile</a> and <a href="https://squirrel-tale.kurame.org">Squirrel&nbsp;Tale</a>, a&nbsp;game&nbsp;I&nbsp;made!</p>
 		</div>
+		<div class="page page-3">
+			<div class="square"></div>
+		</div>
+		<div class="page page-4">
+		</div>
 	</main>
 	<footer>
 		Copyright &copy; 2022 Luna Kurame
 	</footer>
+	<script>
+		window.addEventListener('scroll', () => {
+			if (window.scrollY >= window.innerHeight)
+				document.querySelector('.page-1 .scroll-down').style.visibility = 'hidden';
+
+			const square = document.querySelector('.page-3 .square');
+			square.style.transform = `rotate(${Math.max(window.scrollY - window.innerHeight * 2, 0) / window.innerHeight}turn)`;
+			square.classList[window.scrollY >= window.innerHeight * (2 + 3 - 1) ? 'add' : 'remove']('square-circled');
+		});
+	</script>
 </body>
 </html>
