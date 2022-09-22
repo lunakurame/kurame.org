@@ -82,20 +82,12 @@ a:hover {
 }
 
 @keyframes rotate-name-romaji {
-	from {
-		transform: translateZ(100vw) rotate3d(-.5, -1, .05, 20deg) translateY(-15px);
-		text-shadow: 0 0 10px #0006;
-	}
 	to {
 		transform: translateZ(100vw);
 		text-shadow: -15px 15px 10px #0003;
 	}
 }
 @keyframes rotate-name-romaji-portrait {
-	from {
-		transform: translateZ(100vw) rotate3d(-.5, -1, .05, 20deg) translateY(15px);
-		text-shadow: 0 0 10px #0006;
-	}
 	to {
 		transform: translateZ(100vw);
 		text-shadow: -15px 15px 10px #0003;
@@ -112,11 +104,6 @@ a:hover {
 	}
 }
 @keyframes rotate-name-kanji {
-	from {
-		transform: translateZ(100vw) rotate3d(.5, -1, -.05, 20deg);
-		text-shadow: 0 0 10px #0006;
-		opacity: 1;
-	}
 	to {
 		transform: translateZ(100vw);
 		text-shadow: -15px 15px 10px #0003;
@@ -128,7 +115,9 @@ a:hover {
 }
 
 .page-1 .name-romaji {
-	animation: rotate-name-romaji 3s ease-out 1 forwards;
+	transform: translateZ(100vw) rotate3d(.5, 1, -.05, 20deg);
+	text-shadow: 0 0 10px #0006;
+	animation: rotate-name-romaji 3s ease-out .5s 1 forwards;
 	font: bold 8.25vw/8.25vw Montserrat;
 	text-transform: uppercase;
 	margin: 0;
@@ -139,7 +128,8 @@ a:hover {
 }
 
 .page-1 .name-pronouncation {
-	animation: rotate-name-pronouncation 3s ease-out 1 forwards;
+	opacity: 0;
+	animation: rotate-name-pronouncation 3s ease-out .5s 1 forwards;
 	font: normal 1.7vw/1.7vw Montserrat;
 	text-transform: lowercase;
 	margin: 0;
@@ -150,7 +140,10 @@ a:hover {
 }
 
 .page-1 .name-kanji {
-	animation: rotate-name-kanji 3s ease-out 1 forwards;
+	transform: translateZ(100vw) rotate3d(.5, -1, -.05, 20deg);
+	text-shadow: 0 0 10px #0006;
+	opacity: 1;
+	animation: rotate-name-kanji 3s ease-out .5s 1 forwards;
 	font: normal 14vw/14vw Montserrat;
 	writing-mode: vertical-rl;
 	margin: 0;
@@ -192,7 +185,9 @@ footer {
 
 @media (orientation: portrait) {
 .page-1 .name-romaji {
-	animation: rotate-name-romaji-portrait 3s ease-out 1 forwards;
+	transform: translateZ(100vw) rotate3d(-.5, -1, -.05, 20deg);
+	text-shadow: 0 0 10px #0006;
+	animation: rotate-name-romaji-portrait 3s ease-out .5s 1 forwards;
 	writing-mode: vertical-rl;
 	font-size: 12vh;
 	line-height: 12vh;
