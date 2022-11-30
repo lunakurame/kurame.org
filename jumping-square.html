@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+:root {
+	--anim_mult: 1;
+	--bounciness: .15;
+}
+
+@keyframes jumping {
+	from, to {
+		transform: none;
+	}
+	20% {
+		transform: scale(calc(1 + var(--bounciness)), calc(1 - var(--bounciness)));
+	}
+	25% {
+		transform: none;
+	}
+
+	35% {
+		transform: translateY(-120%);
+	}
+
+	50% {
+		transform: none;
+	}
+	65% {
+		transform: scale(calc(1 + var(--bounciness)), calc(1 - var(--bounciness)));
+	}
+	70% {
+		transform: scale(calc(1 - var(--bounciness)), calc(1 + var(--bounciness)));
+	}
+	75% {
+		transform: none;
+	}
+}
+
+@keyframes rotating {
+	25% {
+		transform: none;
+	}
+	50% {
+		transform: rotate(90deg);
+	}
+	65% {
+		transform: rotate(90deg);
+	}
+	65.01% {
+		transform: none;
+	}
+}
+
+@keyframes scaling {
+	from, 25% {
+		opacity: 0;
+		transform: scale(0);
+	}
+	35% {
+		opacity: .5;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0;
+		transform: scale(0);
+	}
+}
+
+body {
+	background-color: lightblue;
+}
+
+.square {
+	animation: jumping calc(2s * var(--anim_mult)) ease-in-out infinite;
+	will-change: transform;
+	transform-origin: 50% 100%;
+	position: fixed;
+	top: calc(50% - 300px / 2 + (200px * .6));
+	left: calc(50% - 300px / 2);
+	width: 300px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .85), black);
+}
+
+.square > * {
+	animation: rotating calc(2s * var(--anim_mult)) ease-in-out infinite;
+	will-change: transform;
+	width: 200px;
+	height: 200px;
+	background-color: teal;
+	border: 1px solid rgba(255, 255, 255, .2);
+	border-radius: 3px;
+}
+
+.shadow {
+	animation: scaling calc(2s * var(--anim_mult)) ease-in-out infinite;
+	will-change: opacity, transform;
+	position: fixed;
+	top: calc(50% - 200px / 2 + (200px * .6) + 200px - 20px);
+	left: calc(50% - 200px / 2);
+	width: 200px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: black;
+	opacity: 0;
+	transform: scale(0);
+}
+	</style>
+</head>
+<body>
+	<div class="square"><div></div></div>
+	<div class="shadow"></div>
+</body>
+</html>
