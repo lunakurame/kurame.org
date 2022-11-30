@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+body {
+	background-image: linear-gradient(to bottom, lightblue 0%, aquamarine 100%);
+	background-size: 100% 100%;
+	min-height: 100vh;
+}
+
+.button {
+	position: fixed;
+	top: calc(50% - 50px / 2);
+	left: calc(50% - 300px / 2);
+	width: 300px;
+	height: 50px;
+	display: grid;
+	place-items: center;
+	font-family: sans-serif;
+	font-size: 18px;
+	color: teal;
+	border: 2px solid teal;
+	border-radius: 10px;
+	cursor: pointer;
+	transform: perspective(800px) rotate3d(0, 1, 0, 45deg);
+	transition: all .3s ease-in-out;
+	will-change: background-color, transform;
+}
+.button .guts {
+	display: flex;
+	gap: 12px;
+	transform: perspective(800px) rotate3d(0, 1, 0, -45deg) scaleX(2) translateX(-10%);
+	transition: all .3s ease-in-out;
+	will-change: color;
+}
+@keyframes icon {
+	to {
+		transform: rotate(360deg);
+	}
+}
+.icon {
+	animation: icon 2s linear infinite forwards;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-color: teal;
+	border-radius: 2px;
+	transition: all .3s ease-in-out;
+	will-change: background-color, transform;
+}
+.button:hover {
+	background-color: teal;
+	transform: perspective(800px) rotate3d(.2, .5, -.1, -45deg);
+}
+.button:hover .guts {
+	color: #eee;
+}
+.button:hover .icon {
+	background-color: #eee;
+}
+	</style>
+</head>
+<body>
+	<div class="button">
+		<div class="guts"><div class="icon"></div>Skewed button</div>
+	</div>
+</body>
+</html>
